@@ -164,23 +164,66 @@ For every empty position:
 The algorithm can be visualized as a decision tree:
 
 ```text
+Start with an empty grid
+
 Cell (0,0)
-├── 1
-│   ├── Cell (0,1)
-│   ├── ...
 │
-├── 2
-│   ├── Cell (0,1)
-│   ├── ...
+├── Try 1 ✓
+│   │
+│   └── Cell (0,1)
+│       │
+│       ├── Try 1 ✗
+│       │     Rejected:
+│       │     1 already exists in the row
+│       │
+│       ├── Try 2 ✓
+│       │   │
+│       │   └── Cell (0,2)
+│       │       │
+│       │       ├── Try 1 ✗
+│       │       │     Rejected:
+│       │       │     1 already exists in the row
+│       │       │
+│       │       ├── Try 2 ✗
+│       │       │     Rejected:
+│       │       │     2 already exists in the row
+│       │       │
+│       │       ├── Try 3 ✓
+│       │       │   │
+│       │       │   └── Continue...
+│       │       │
+│       │       └── Try 4 ✓
+│       │
+│       ├── Try 3 ✓
+│       │
+│       └── Try 4 ✓
 │
-├── 3
-│   ├── Cell (0,1)
-│   ├── ...
+├── Try 2 ✓
+│   └── Explore another branch
 │
-└── 4
+├── Try 3 ✓
+│   └── Explore another branch
+│
+└── Try 4 ✓
+    └── Explore another branch
 ```
 
-Whenever a branch violates the rules, it is abandoned immediately.
+At each cell, the solver tries every possible skyscraper height from 1 to 4.
+
+Before placing a value, it checks whether that value already exists in the current row or column.
+
+If a rule is violated, that branch of the search tree is abandoned immediately.
+
+If a value is valid, the solver places it and moves to the next cell.
+
+When the solver reaches a situation where no valid value can be placed, it returns to the previous cell, removes the last value, and tries the next possibility. This process is called backtracking.
+
+The search continues until either:
+
+A complete grid satisfying all row, column, and visibility constraints is found.
+Every possible branch has been explored and rejected.
+
+Because invalid branches are discarded as soon as they violate a rule, the solver avoids exploring a large number of impossible solutions.
 
 ---
 
