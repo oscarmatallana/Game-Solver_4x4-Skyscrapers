@@ -2,6 +2,37 @@
 
 # 4x4 Skyscrapers Game Solver
 
+## Table of Contents
+
+- [About the Project](#about-the-project)
+- [Rules](#rules)
+- [Project Focus](#project-focus)
+- [Description](#description)
+- [Example](#example)
+- [How the Puzzle Works](#how-the-puzzle-works)
+- [Algorithm](#algorithm)
+  - [Why Backtracking?](#why-backtracking)
+  - [High-Level Strategy](#high-level-strategy)
+  - [Search Tree](#search-tree)
+- [Detailed Code Walkthrough](#detailed-code-walkthrough)
+  - [1. Parsing the Input](#1-parsing-the-input)
+  - [2. Creating the Grid](#2-creating-the-grid)
+  - [3. Checking Row and Column Constraints](#3-checking-row-and-column-constraints)
+  - [4. Solving the Puzzle](#4-solving-the-puzzle)
+  - [5. Visibility Verification](#5-visibility-verification)
+  - [6. Final Validation](#6-final-validation)
+  - [7. Output](#7-output)
+- [Project Structure](#project-structure)
+- [Instructions](#instructions)
+  - [Compilation](#compilation)
+  - [Execution](#execution)
+- [Complexity Discussion](#complexity-discussion)
+- [Resources](#resources)
+- [AI Usage](#ai-usage)
+- [Author](#author)
+
+---
+
 ## About the Project
 
 Skyscrapers (also known as Towers) is a logic puzzle that combines deceptively simple rules with surprisingly challenging solutions.
